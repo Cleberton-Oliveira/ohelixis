@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<nav class="nav-extended fixed">
+    <div class="nav-wrapper white">
+        <a href="/" ><img  src='/static/img/logo_ohelixis.png' style="max-height: 40px; position: absolute; margin-top: 1%; padding-left:10%;"></a>
+        <ul class="right hide-on-med-and-down">
+        {%  if user.is_authenticated  %}
+            <li><a class="indigo-text text-darken-4" href="{% url 'admin:index'  %}"><i class="material-icons right indigo-text text-darken-4">account_circle</i>{{ user }}</a></li>
+            <li><a class="indigo-text text-darken-4" href="{% url 'logout'  %}"><i class="material-icons right indigo-text text-darken-4">close</i>Sair</a></li>
+            {% else %}
+                 <li><a class="indigo-text text-darken-4" href="{% url 'registration'  %}"><i class="material-icons right indigo-text text-darken-4">account_circle</i>Registrar-se</a></li>
+                <li><a class="indigo-text text-darken-4" href="{% url 'admin:index'  %}"><i class="material-icons right indigo-text text-darken-4">https</i>Login</a></li>
+        {% endif %}
+        </ul>
+    </div>
+    <div class=" indigo darken-4">
+    <div class="row container nav-content  ">
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/eletronico.png' style="height: 40px; margin-top: 10%;"></div>
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/eletrodomestico.png' style="height: 40px; margin-top: 6%;"></div>
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/imoveis.png' style="height: 40px; margin-top: 6%;"></div>
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/roupas.png' style="height: 40px; margin-top: 6%;"></div>
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/esportes.png' style="height: 40px; margin-top: 6%;"></div>
+        <div class="col m2 center"><img href="/" class="responsive-img " src='/static/img/automoveis.png' style="height: 40px; margin-top: 6%;"></div>
+    </div>
+        <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal">
+        <i class="material-icons">add</i>
+      </a>
+    </div>
+  </nav>
