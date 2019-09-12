@@ -24,33 +24,15 @@ class Produto(models.Model):
         return self.nome
 
 
-class Vendidos(models.Model):
+class Vendas(models.Model):
 
     class Meta:
-        verbose_name='Historico de Produtos Vendido'
+        verbose_name='Transação'
 
-    nome = models.CharField('Nome do Produto', max_length=100)
-    tipo_produto = models.CharField(max_length=10, choices=Tipo.tipos,)
-    # responsavel = models.ForeignKey(null=False, on_delete=models.CASCADE)
-    descricao = models.TextField("descrição", blank=True, null=True)
-    imagem = models.ImageField('Imagem', blank =True)
-    
+    # comprador = models.ForeignKey()
+    # vendedor = models.ForeignKey()
+    # produto = models
 
     def __str__(self):
         return self.nome
 
-
-class Comprados(models.Model):
-
-    class Meta:
-        verbose_name='Historico de Produtos Comprado'
-
-    nome = models.CharField('Nome do Produto', max_length=100)
-    tipo_produto = models.CharField(max_length=10, choices=Tipo.tipos,)
-    # responsavel = models.ForeignKey(null=False, on_delete=models.CASCADE)
-    descricao = models.TextField("descrição", blank=True, null=True)
-    imagem = models.ImageField('Imagem', blank =True)
-    link = models.CharField('Link', max_length=20)
-
-    def __str__(self):
-        return self.nome
