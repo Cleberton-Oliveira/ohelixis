@@ -8,7 +8,7 @@ from .models import Produto
 
 def index(request):
     produto = Produto.objects.all()
-    return render(request, "index.html", {"produto": produto,})
+    return render(request, "index.html", {"produtos": produto,})
 
 # def registration(request):
 

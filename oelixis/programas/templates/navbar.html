@@ -7,7 +7,6 @@
             <li><a class="indigo-text text-darken-4" href="{% url 'admin:index'  %}"><i class="material-icons right indigo-text text-darken-4">account_circle</i>{{ user }}</a></li>
             <li><a class="indigo-text text-darken-4" href="{% url 'logout'  %}"><i class="material-icons right indigo-text text-darken-4">close</i>Sair</a></li>
             {% else %}
-                 <li><a class="indigo-text text-darken-4" href="{% url 'registration'  %}"><i class="material-icons right indigo-text text-darken-4">account_circle</i>Registrar-se</a></li>
                 <li><a class="indigo-text text-darken-4" href="{% url 'admin:index'  %}"><i class="material-icons right indigo-text text-darken-4">https</i>Login</a></li>
         {% endif %}
         </ul>
