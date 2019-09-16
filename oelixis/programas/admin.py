@@ -9,7 +9,17 @@ from django.utils.html import format_html
 class ProdutoAdmin(admin.ModelAdmin):
     form = ProdutoForm
     list_display = ('nome', 'image_tag')
+    list_filter = ('responsaveis', 'membros',)
 
+    def get_readonly_fields(self, request, obj=None):
+        qs = super(ProdutoForm, self).get_queryset(request)
+        qsResp = qs.filter(responsaveis=request.user)
+        qsMemb = qs.filter(membros=request.user)
+        if obj in qsResp or request.user.is_superuser:
+            return []
+        if obj in qsMemb:
+            return ('nome', 'responsaveis', 'membros', 'preco', 'tipo_produto', 'descricao','imagem')
+        return []
 
     def get_actions(self, request):
         actions = super(ProdutoAdmin, self).get_actions(request)
@@ -18,10 +28,18 @@ class ProdutoAdmin(admin.ModelAdmin):
                 del actions['delete_selected']
         return actions
 
+    def get_queryset(self, request):
+        qs = super(ProdutoAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(Q(responsaveis=request.user) | Q(membros=request.user)).distinct()
+
+
     def has_add_permission(self, request):
         if request.user.is_superuser:
             return True
         return False
+
 
     def save_model(self, request, obj, form, change):
         gLink = obj.nome.lower()
