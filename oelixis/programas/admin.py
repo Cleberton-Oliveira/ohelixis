@@ -36,8 +36,8 @@ class ProdutoAdmin(admin.ModelAdmin):
     #     if request.user.is_superuser:
     #         return qs
     #     return qs.filter(Q(responsaveis=request.user) | Q(membros=request.user)).distinct()
-
     #
+
     # def has_add_permission(self, request):
     #     if request.user.is_superuser:
     #         return True
