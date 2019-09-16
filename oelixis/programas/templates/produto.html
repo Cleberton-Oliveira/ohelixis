@@ -5,19 +5,20 @@
 	<title>{% block title %}{{ produto.nome }} - Ohelixis {% endblock %}</title>
 {% endblock %}
 {% block body %}
- <div class="row center blockContainer">
+ <div class="row blockContainer">
 		<div class="col s12 m6 center">
-			{% if glossario.video %}
-
+			{% if produto.imagem %}
+					<img class="activator img_produto"  width="550px" src="{{ produto.imagem.url }}">
 			{% endif %}
 		</div>
 		<div class="block col s12  m6">
-			 <div class="block col m3">
-                 <h2 class="thin">{{produto.nome}}</h2>
-			 </div>
-				<ul class="col s12 m12 ">
-				    <li id="definicao" class="divider divisor"></li>
-				    <li class="definicao">{{produto.descricao}}</li>
+			<h2 class="thin">{{produto.nome}}</h2>
+			<ul class="col s12 m12 ">
+				<li id="definicao" class="divider divisor"></li>
+				<br />
+				<li><h6>{{produto.descricao}}</h6></li>
+				<li><h3>R$ {{produto.preco}}<h3></li>
+				<li><div class="btn-large blue">Comprar</div></li>
 			</ul>
 		</div>
  </div>

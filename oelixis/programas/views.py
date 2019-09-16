@@ -21,4 +21,4 @@ def produtoSelecionado(request, produto):
     except Produto.DoesNotExist:
         produto = None
 
-        return render(request, 'produto.html', {'produto': produto,})
+    return render(request, 'produto.html', {'produto': produto,})
