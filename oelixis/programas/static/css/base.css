@@ -14,3 +14,11 @@ body{
     height: auto;
 
 }
+
+.img_produto_grande {
+    max-width:550px;
+    max-height:550px;
+    width: auto;
+    height: auto;
+
+}

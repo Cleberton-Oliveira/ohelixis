@@ -33,8 +33,8 @@ class Vendas(models.Model):
     class Meta:
         verbose_name='Transação'
 
-    # comprador = models.ForeignKey()
-    # vendedor = models.ForeignKey()
+    # comprador = models.ForeignKey(CUser, verbose_name = 'responsaveis')
+    # vendedor = models.ForeignKey(CUser, verbose_name = 'responsaveis')
     # produto = models
 
     def __str__(self):
