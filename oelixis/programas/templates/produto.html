@@ -18,7 +18,11 @@
 				<br />
 				<li><h6>{{produto.descricao}}</h6></li>
 				<li><h3 class="blue-text">R$ {{produto.preco}}<h3></li>
-				<li><div class="btn-large blue">Comprar</div></li>
+				 {%  if user.is_authenticated  %}
+					<li><div id="compra" class="btn-large blue">Comprar</div></li>
+				{% else %}
+					<li><a href="/admin/login/?next=/"{{ produto.link }}"/" class="btn-large blue">Fazer Login</a></li>
+				{% endif %}
 			</ul>
 		</div>
  </div>
