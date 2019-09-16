@@ -12,15 +12,16 @@
             <br />
 
         {% for produto in produtos  %}
-
             <div class="card col m3">
+                <a href="/{{ produto.link }}">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator img_produto responsive-img" src="{{ produto.imagem }}">
+                    <img class="activator img_produto responsive-img" src="{{ produto.imagem.url }}">
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4"><h8>{{ produto.nome }}</h8></span>
-                    <p><a href="#">{{ produto.preco }}</a></p>
+                    <p><a href="/{{ produto.link }}">{{ produto.preco }}</a></p>
                 </div>
+                </a>
             </div>
         {% endfor %}
 

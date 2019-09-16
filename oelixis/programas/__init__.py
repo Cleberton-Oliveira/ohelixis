@@ -1,0 +1,1 @@
+default_app_config = 'programas.apps.ProdutoConfig'

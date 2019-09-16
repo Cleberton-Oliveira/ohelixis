@@ -120,5 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'programas/static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 AUTH_USER_MODEL = 'cuser.CUser'
+
+
+WSGI_APPLICATION = 'oelixis.wsgi.application'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

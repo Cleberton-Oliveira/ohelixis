@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Tipo(models.Model):
     class Meta:
         abstract = True
@@ -16,7 +17,7 @@ class Produto(models.Model):
     nome = models.CharField('Nome do Produto', max_length=100)
     preco = models.DecimalField(max_digits=10, decimal_places=2, default=000.00)
     tipo_produto = models.CharField(max_length=10, choices=Tipo.tipos,)
-    # responsavel = models.ForeignKey(null=False, on_delete=models.CASCADE)
+    # responsavel = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     descricao = models.TextField("descrição", blank=True, null=True)
     imagem = models.ImageField('Imagem', blank =True)
     link = models.CharField('Link', max_length=20)

@@ -1,12 +1,8 @@
-from django.form import ModelForm
-from .models import Person
-from .form import PersonForm
+from django import forms
+from .models import Produto
 
 
-def list_person(modelForm):
-    usuario = Person.objects.all()
+class ProdutoForm(forms.ModelForm):
     class Meta:
-        modal = usuario
-
-def person_new(request)
-
+        model = Produto
+        exclude = ['link']

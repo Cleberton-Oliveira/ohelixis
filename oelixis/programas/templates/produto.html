@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block head %}
+	{{ block.super }}
+	{% load staticfiles %}
+	<title>{% block title %}{{ produto.nome }} - Ohelixis {% endblock %}</title>
+{% endblock %}
+{% block body %}
+ <div class="row center blockContainer">
+		<div class="col s12 m6 center">
+			{% if glossario.video %}
+
+			{% endif %}
+		</div>
+		<div class="block col s12  m6">
+			 <div class="block col m3">
+                 <h2 class="thin">{{produto.nome}}</h2>
+			 </div>
+				<ul class="col s12 m12 ">
+				    <li id="definicao" class="divider divisor"></li>
+				    <li class="definicao">{{produto.descricao}}</li>
+			</ul>
+		</div>
+ </div>
+{% endblock %}
