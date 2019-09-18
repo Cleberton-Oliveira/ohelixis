@@ -5,6 +5,7 @@
 	<title>{% block title %}{{ produto.nome }} - Ohelixis {% endblock %}</title>
 {% endblock %}
 {% block body %}
+
  <div class="row blockContainer">
 		<div class="col s12 m6 center">
 			{% if produto.imagem %}
@@ -19,7 +20,12 @@
 				<li><h6>{{produto.descricao}}</h6></li>
 				<li><h3 class="blue-text">R$ {{produto.preco}}<h3></li>
 				 {%  if user.is_authenticated  %}
-					<li><div id="compra" class="btn-large blue">Comprar</div></li>
+					<form method="post" class="form" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+						<input type="submit" class="btn-large blue" value="Comprar">
+                    </form>
 				{% else %}
 					<li><a href="/admin/login/?next=/"{{ produto.link }}"/" class="btn-large blue">Fazer Login</a></li>
 				{% endif %}

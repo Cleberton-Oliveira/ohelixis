@@ -2,16 +2,12 @@ from django.contrib.auth import login, authenticate
 from cuser.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from .models import Produto
-
-
-
+from .models import Produto, Vendas
+from .forms import VendaForm
 
 def index(request):
-    produto = Produto.objects.all()
+    produto = Produto.objects.filter(vendido=False)
     return render(request, "index.html", {"produtos": produto,})
-
-# def registration(request):
 
 def registration(request):
     if request.method == 'POST':
@@ -34,9 +30,26 @@ def sair(request):
 
 
 def produtoSelecionado(request, produto):
-    try:
-        produto = Produto.objects.get(link=produto)
-    except Produto.DoesNotExist:
-        produto = None
 
-    return render(request, 'produto.html', {'produto': produto,})
+    if request.method == "POST":
+        print('passei')
+        form = VendaForm(request.POST)
+        produto = Produto.objects.get(link=produto)
+        if form.is_valid():
+            post = form.save(commit=False)
+            produto.vendido = True
+            produto.save()
+            post.save()
+            return redirect('/')
+    else:
+        form = VendaForm()
+        produto = Produto.objects.get(link=produto)
+        try:
+            produto
+        except Produto.DoesNotExist:
+            produto = None
+        form.initial = {'vendedor': produto.responsavel, 'comprador' : request.user, 'produto_vendido': produto}
+        form.vendedor = produto.responsavel
+        form.comprador = request.user
+        form.produto_vendido = produto
+        return render(request, 'produto.html', {'produto': produto, 'form': form})

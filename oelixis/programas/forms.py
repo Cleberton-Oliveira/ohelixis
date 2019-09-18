@@ -1,8 +1,9 @@
 from django import forms
-from .models import Produto
+from .models import Vendas
 
 
-class ProdutoForm(forms.ModelForm):
+class VendaForm(forms.ModelForm):
     class Meta:
-        model = Produto
-        exclude = ['link']
+        model = Vendas
+        fields = "__all__"
+        widgets = {'comprador': forms.HiddenInput(), 'vendedor': forms.HiddenInput(), 'produto_vendido': forms.HiddenInput()}

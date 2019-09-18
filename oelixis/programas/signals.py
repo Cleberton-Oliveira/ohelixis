@@ -10,3 +10,7 @@ def set_new_user_group(sender, instance, **kwargs):
     user = CUser.objects.get(id=instance.id)
     membros_group = Group.objects.get_or_create(name='Usuarios')[0]
     membros_group.user_set.add(user)
+
+
+# @receiver(post_save, sender= Produto)
+# def exclude_produto(sender, instance, **kwargs):
